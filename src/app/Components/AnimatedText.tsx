@@ -3,15 +3,18 @@ import { useEffect, useRef } from "react";
 
 type AnimatedTextProps = {
   text: string | string[];
-  el?: keyof JSX.IntrinsicElements;
+  el?: React.ElementType; // Use React.ElementType
   className?: string;
   once?: boolean;
   repeatDelay?: number;
   delay?: number;
-  duration?: number; // New duration prop
+  duration?: number;
 };
 
-const defaultAnimations = (duration: number) => ({
+const defaultAnimations = (duration: number): {
+  hidden: { opacity: number; filter: string; scale: number };
+  visible: { opacity: number; filter: string; scale: number; transition: { duration: number } };
+} => ({
   hidden: {
     opacity: 0,
     filter: "blur(4px)",
@@ -22,7 +25,7 @@ const defaultAnimations = (duration: number) => ({
     filter: "blur(0px)",
     scale: 1,
     transition: {
-      duration: duration, // Use duration from props
+      duration: duration,
     },
   },
 });
@@ -34,15 +37,15 @@ export const AnimatedText = ({
   once,
   repeatDelay,
   delay = 0,
-  duration = 0.5, // Set default duration to 0.5 seconds
+  duration = 0.5,
 }: AnimatedTextProps) => {
   const controls = useAnimation();
   const textArray = Array.isArray(text) ? text : [text];
-  const ref = useRef(null);
+  const ref = useRef<HTMLSpanElement>(null); // Explicitly type the ref
   const isInView = useInView(ref, { amount: 0.5, once });
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: ReturnType<typeof setTimeout>; // Cross-environment timeout type
     const show = () => {
       controls.start("visible");
       if (repeatDelay) {
@@ -88,7 +91,7 @@ export const AnimatedText = ({
                   <motion.span
                     key={`${char}-${charIndex}`}
                     className="inline-block"
-                    variants={defaultAnimations(duration)} // Pass duration here
+                    variants={defaultAnimations(duration)}
                   >
                     {char}
                   </motion.span>
