@@ -12,27 +12,33 @@ import Logo7 from "@/../public/clients/logo7.png";
 const staggerContainer = {
   show: {
     transition: {
-      staggerChildren: 0.22, 
+      staggerChildren: 0.22,
     },
   },
 };
 
 const fadeInFromBottom = {
   hidden: { opacity: 0, y: 10, filter: "blur(10px)", scale: 1.2 },
-  show: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },   
+  show: { opacity: 1, y: 0, filter: "blur(0px)", scale: 1 },
 };
 
 const Clients = () => {
   return (
     <motion.div
-      className="relative -z-10 flex items-center md:bottom-0 bottom-44 md:w-3/5 lg:w-2/5 gap-10 m-5 lg:m-10"
+      className="fixed z-10 left-0 flex gap-5 p-5 md:gap-10 md:p-10 top-16 mx-5 lg:top-auto lg:bottom-0"
       variants={staggerContainer}
       initial="hidden"
       animate="show"
     >
       {[Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7].map((logo, index) => (
         <motion.div key={index} variants={fadeInFromBottom}>
-          <Image src={logo} alt={`logo${index + 1}`} height={50} width={50} />
+          <Image
+            src={logo}
+            alt={`logo${index + 1}`}
+            height={50}
+            width={50}
+            className=""
+          />
         </motion.div>
       ))}
     </motion.div>

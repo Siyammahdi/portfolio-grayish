@@ -41,13 +41,15 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
   return (
     <header className="relative z-50">
       <div className="m-10 flex justify-between items-center">
-        <Image src={Logo} alt="logo" height={60} width={160} />
+        <div>
+          <Image className='w-1/3 md:w-full' src={Logo} alt="logo" height={60} width={160} />
+        </div>
 
         {/* Mobile Menu Drawer Trigger */}
         <Drawer.Root>
           <Drawer.Trigger asChild>
             <button className="lg:hidden z-10 text-3xl">
-              <FiMenu />
+              <FiMenu size={18} />
             </button>
           </Drawer.Trigger>
           <Drawer.Portal>
@@ -85,40 +87,40 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
                       <FaWhatsapp size={30} />
                     </motion.div>
 
-                    
+
                   </motion.div>
                 </Drawer.Close>
                 <Drawer.Close asChild>
-                <div className='flex gap-4'>
-                      {[
-                        {
-                          href: "https://linkedin.com",
-                          icon: <FaLinkedin />,
-                          hover: "hover:text-blue-500",
-                        },
-                        {
-                          href: "https://github.com/Siyammahdi",
-                          icon: <FaGithub />,
-                          hover: "hover:text-gray-400",
-                        },
-                        {
-                          href: "https://www.facebook.com/siyammahdi911",
-                          icon: <FaFacebook />,
-                          hover: "hover:text-blue-400",
-                        },
-                      ].map(({ href, icon, hover }, idx) => (
-                        <motion.a
-                          key={idx}
-                          href={href}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className={hover}
-                          variants={socialItems}
-                        >
-                          {icon}
-                        </motion.a>
-                      ))}
-                    </div>
+                  <div className='flex gap-4'>
+                    {[
+                      {
+                        href: "https://linkedin.com",
+                        icon: <FaLinkedin />,
+                        hover: "hover:text-blue-500",
+                      },
+                      {
+                        href: "https://github.com/Siyammahdi",
+                        icon: <FaGithub />,
+                        hover: "hover:text-gray-400",
+                      },
+                      {
+                        href: "https://www.facebook.com/siyammahdi911",
+                        icon: <FaFacebook />,
+                        hover: "hover:text-blue-400",
+                      },
+                    ].map(({ href, icon, hover }, idx) => (
+                      <motion.a
+                        key={idx}
+                        href={href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={hover}
+                        variants={socialItems}
+                      >
+                        {icon}
+                      </motion.a>
+                    ))}
+                  </div>
                 </Drawer.Close>
 
               </div>
