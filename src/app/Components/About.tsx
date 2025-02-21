@@ -37,17 +37,18 @@ const About: React.FC = () => {
   return (
     <ScrollArea className="h-[70vh] md:h-[74vh] w-full">
       <motion.div
-        className="flex flex-col items-center justify-center text-gray-200"
+        className="flex flex-col items-center justify-center text-gray-200 px-4 sm:px-6 lg:px-8"
         ref={ref}
         initial="hidden"
         animate={controls}
         variants={staggerContainer}
       >
         {/* Personal Image Section */}
-        <div className='flex m-20 gap-10'>
-          <div className='w-1/5'>
+        <div className="flex flex-col md:flex-row items-center md:mx-24 gap-6 md:gap-10 my-10 md:my-20">
+          {/* Image Container */}
+          <div>
             <motion.div
-              className="relative w-40 h-40 rounded-full overflow-hidden border-4 border-gray-300 mb-6"
+              className="relative w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-4 border-gray-300"
               variants={staggerItem}
             >
               <Image
@@ -55,30 +56,32 @@ const About: React.FC = () => {
                 alt="My Profile Picture"
                 layout="fill"
                 objectFit="cover"
+                className="rounded-full" // Ensure the image itself is rounded
               />
             </motion.div>
           </div>
 
-          <div>
+          {/* Text Content */}
+          <div className="text-center md:text-left">
             {/* Main Heading */}
-            <motion.h1 className="text-3xl lg:text-5xl font-bold text-gray-300 mb-6" variants={staggerItem}>
+            <motion.h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-gray-300 mb-4" variants={staggerItem}>
               Developer & Web Enthusiast
             </motion.h1>
 
             {/* Intro Paragraph */}
-            <motion.p className="text-xs md:text-sm lg:text-base leading-relaxed text-gray-300 mb-4 text-start" variants={staggerItem}>
+            <motion.p className="text-xs sm:text-sm lg:text-base leading-relaxed text-gray-300 mb-4" variants={staggerItem}>
               Hi, I am a passionate front-end developer specializing in building modern, responsive web applications using Next.js, TypeScript, Tailwind CSS, Framer Motion, and Shadcn UI. I craft smooth user experiences with clean, maintainable code and pixel-perfect designs.
             </motion.p>
-
           </div>
         </div>
+
         {/* Expertise Section */}
-        <div className="pb-12 w-full max-w-3xl">
-          <motion.h2 className="text-3xl font-bold text-gray-300 mb-6 text-center" variants={staggerItem}>
+        <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8 pb-12">
+          <motion.h2 className="text-2xl sm:text-3xl font-bold text-gray-300 mb-6 text-center" variants={staggerItem}>
             What I Do Best
           </motion.h2>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {features.map((feature) => (
               <motion.div
                 key={feature.id}
@@ -88,24 +91,24 @@ const About: React.FC = () => {
                 <div className="flex justify-center items-center w-12 h-12 mx-auto bg-gray-300 rounded-full mb-4">
                   {feature.icon}
                 </div>
-                <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                <p className="text-sm text-gray-300">{feature.description}</p>
+                <h3 className="text-lg sm:text-xl font-bold text-white mb-2">{feature.title}</h3>
+                <p className="text-xs sm:text-sm text-gray-300">{feature.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
 
         {/* Core Values Section */}
-        <div className='mx-28'>
-          <motion.h2 className="text-3xl font-bold text-gray-300 mt-8 mb-4" variants={staggerItem}>
+        <div className="w-full max-w-4xl px-4 sm:px-6 lg:px-8">
+          <motion.h2 className="text-2xl sm:text-3xl font-bold text-gray-300 mt-8 mb-4" variants={staggerItem}>
             My Core Values
           </motion.h2>
-          <motion.p className="text-sm lg:text-lg leading-relaxed text-gray-300 mb-4 text-start" variants={staggerItem}>
+          <motion.p className="text-sm lg:text-base leading-relaxed text-gray-300 mb-4" variants={staggerItem}>
             I believe in clean code, intuitive UI/UX, and delivering performant web solutions. My work reflects a strong commitment to innovation, collaboration, and continuous improvement.
           </motion.p>
 
           {/* Values List */}
-          <motion.ul className="list-inside list-disc text-base space-y-3" variants={staggerItem}>
+          <motion.ul className="list-inside list-disc text-sm sm:text-base space-y-3" variants={staggerItem}>
             <motion.li className="text-gray-300" variants={staggerItem}>
               <strong className="font-semibold text-gray-200">Performance Focused:</strong> Optimizing every aspect for speed and efficiency.
             </motion.li>
@@ -118,10 +121,10 @@ const About: React.FC = () => {
           </motion.ul>
 
           {/* Goals Section */}
-          <motion.h2 className="text-3xl font-bold text-gray-300 mt-8 mb-4" variants={staggerItem}>
+          <motion.h2 className="text-2xl sm:text-3xl font-bold text-gray-300 mt-8 mb-4" variants={staggerItem}>
             My Goals
           </motion.h2>
-          <motion.p className="text-sm lg:text-lg leading-relaxed text-gray-300 mb-4 text-start" variants={staggerItem}>
+          <motion.p className="text-sm lg:text-base leading-relaxed text-gray-300 mb-4" variants={staggerItem}>
             My mission is to transform ideas into reality through web technologies, offering solutions that are scalable, responsive, and delightful to use. I aim to contribute to projects where innovation and performance matter most.
           </motion.p>
         </div>

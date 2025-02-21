@@ -132,7 +132,7 @@ const Portfolio: React.FC = () => {
               <Image
                 src={project.imageUrl}
                 alt={project.title}
-                className="w-full h-44 md:h-64 object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-xl"
+                className="w-full h-44 md:h-48 object-cover transform transition-transform duration-300 group-hover:scale-105 rounded-xl"
                 height={250}
                 width={400}
               />

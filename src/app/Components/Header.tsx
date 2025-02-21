@@ -42,7 +42,7 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
     <header className="relative z-50">
       <div className="m-10 flex justify-between items-center">
         <div>
-          <Image className='w-1/3 md:w-full' src={Logo} alt="logo" height={60} width={160} />
+          <Image className='w-2/5 md:w-3/4' src={Logo} alt="logo" height={60} width={160} />
         </div>
 
         {/* Mobile Menu Drawer Trigger */}

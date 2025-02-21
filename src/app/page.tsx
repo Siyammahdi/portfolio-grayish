@@ -96,7 +96,7 @@ export default function Home() {
   };
 
   return (
-    <div className="relative text-gray-200">
+    <div className="relative h-screen text-gray-200">
       <motion.div
         className="absolute bg-[url('/noise-light.png')] h-full w-full -z-50 top-0 left-0 opacity-60"
         initial={{ opacity: 0 }}
