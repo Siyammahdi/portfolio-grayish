@@ -6,6 +6,8 @@ import Logo2 from "@/../public/clients/logo2.png";
 import Logo3 from "@/../public/clients/logo3.png";
 import Logo4 from "@/../public/clients/logo4.png";
 import Logo5 from "@/../public/clients/logo5.png";
+import Logo6 from "@/../public/clients/logo6.png";
+import Logo7 from "@/../public/clients/logo7.png";
 
 const staggerContainer = {
   show: {
@@ -28,9 +30,9 @@ const Clients = () => {
       initial="hidden"
       animate="show"
     >
-      {[Logo1, Logo2, Logo3, Logo4, Logo5].map((logo, index) => (
+      {[Logo1, Logo2, Logo3, Logo4, Logo5, Logo6, Logo7].map((logo, index) => (
         <motion.div key={index} variants={fadeInFromBottom}>
-          <Image src={logo} alt={`logo${index + 1}`} height={100} width={100} />
+          <Image src={logo} alt={`logo${index + 1}`} height={50} width={50} />
         </motion.div>
       ))}
     </motion.div>

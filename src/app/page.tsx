@@ -2,7 +2,7 @@
 
 import { useState, ReactNode } from "react";
 import { IoClose } from "react-icons/io5";
-import { FaLinkedin, FaGithub, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { FaLinkedin, FaGithub, FaWhatsapp, FaFacebook } from "react-icons/fa";
 import { motion } from "framer-motion";
 import Clients from "./Components/Clients";
 import About from "./Components/About";
@@ -18,6 +18,15 @@ import Meeting from "./Components/Meeting";
 
 type ModalContentType = "Portfolio" | "About" | "Contact" | "Meeting" | null;
 
+
+const handleDownload = () => {
+  const link = document.createElement("a");
+  link.href = "/siyammahdi_resume.pdf";
+  link.download = "siyammahdi_resume.pdf";
+  document.body.appendChild(link);
+  link.click();
+  document.body.removeChild(link);
+};
 
 const social = {
   hidden: { opacity: 0 },
@@ -89,13 +98,13 @@ export default function Home() {
   return (
     <div className="relative text-gray-200">
       <motion.div
-        className="absolute bg-[url('/noise-light.png')] h-full w-full top-0 left-0 opacity-60"
+        className="absolute bg-[url('/noise-light.png')] h-full w-full -z-50 top-0 left-0 opacity-60"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ duration: 0.8 }}
       ></motion.div>
       <motion.div
-        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${isModalOpen ? "backdrop-blur-sm opacity-100" : "opacity-0 pointer-events-none"
+        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${isModalOpen ? "backdrop-blur-sm opacity-100 z-50" : "opacity-0 pointer-events-none "
           }`}
         onClick={closeModal}
         initial={{ opacity: 0 }}
@@ -117,8 +126,8 @@ export default function Home() {
             variants={item}
           >
             <AnimatedText
-              className="relative -z-10"
-              text="DELIVERING TOP CLASS DEVS FOR YOUR STARTUP"
+              className="relative -z-10 uppercase"
+              text="Building High-Quality Web Solutions with Modern Tech"
             />
           </motion.h2>
           <motion.div
@@ -130,16 +139,22 @@ export default function Home() {
               animate={{ opacity: 1 }}
               transition={{
                 duration: 0.8,
-                delay: 2,
+                delay: 3,
               }}
-              className="text-[10px] md:text-sm lg:text-2xl normal-case font-semibold relative text-[#5f5f5f] -z-10"
+              className="text-[10px] md:text-sm lg:text-2xl normal-case font-semibold relative text-[#5f5f5f] -z-20"
             >
 
-              <span className="text-white">Save time and money,</span> Hire dedicated experts and realize your vision with <span className="text-blue-400">speed</span> and <span className="text-purple-400">precision.</span>
+<span className="text-white">Turn ideas into reality,</span> collaborate with dedicated experts for <span className="text-blue-400">lightning-fast</span> delivery and <span className="text-purple-400">flawless precision.</span>
             </motion.p>
-            <motion.div className="my-4 space-x-4 relative z-50" variants={item}>
-              <button onClick={() => openModal("Meeting")} className="text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 bg-gray-200">Set a meeting</button>
-              <button onClick={() => openModal("About")} className="text-gray-200 px-4 py-2 rounded-full hover:bg-gray-200 border-2 hover:border-gray-200 hover:text-gray-800">About Us</button>
+            <motion.div className="my-4 space-x-4 relative z-0" variants={item}>
+              <button
+                onClick={handleDownload}
+                className="text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 bg-gray-200"
+              >
+                Resume
+              </button>
+              <button onClick={() => openModal("Meeting")} className="text-gray-200 px-4 py-2 rounded-full hover:bg-gray-200 border-2 hover:border-gray-200 hover:text-gray-800" >Set a meeting</button>
+
             </motion.div>
           </motion.div>
         </motion.div>
@@ -177,13 +192,13 @@ export default function Home() {
         </div>
       </div>
       <motion.div
-        className="absolute bottom-10 right-96 lg:right-10 flex items-center gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
+        className="absolute bottom-6 right-6 lg:right-[430px] flex items-center gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
         variants={social}
         initial="hidden"
         animate="show"
       >
-        <motion.div className="flex items-center  text-gray-700 p-1 pl-4 rounded-full bg-white">
-          <Link href="https://wa.link/hpxctc"><p className="text-xs w-20">Connect with</p></Link>
+        <motion.div className="flex items-center  text-gray-700 md:p-1 pl-2 md:pl-4 rounded-full bg-white">
+          <Link href="https://wa.link/hpxctc"><p className="text-[10px] md:text-xs w-20">Connect with</p></Link>
           <FaWhatsapp size={30} />
         </motion.div>
 
@@ -194,13 +209,13 @@ export default function Home() {
             hover: "hover:text-blue-500",
           },
           {
-            href: "https://github.com",
+            href: "https://github.com/Siyammahdi",
             icon: <FaGithub />,
             hover: "hover:text-gray-400",
           },
           {
-            href: "https://twitter.com",
-            icon: <FaTwitter />,
+            href: "https://www.facebook.com/siyammahdi911",
+            icon: <FaFacebook />,
             hover: "hover:text-blue-400",
           },
         ].map(({ href, icon, hover }, idx) => (
@@ -217,7 +232,7 @@ export default function Home() {
         ))}
       </motion.div>
 
-      <div className="absolute top-2/4 right-20">
+      <div className="absolute top-1/4 right-0 z-0">
         <ServiceCard />
       </div>
 

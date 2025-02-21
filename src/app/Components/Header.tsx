@@ -24,12 +24,12 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
             </button>
           </Drawer.Trigger>
           <Drawer.Portal>
-            <Drawer.Overlay className="fixed inset-0 bg-black/60" />
+            <Drawer.Overlay className="fixed inset-0 bg-black/60 backdrop-blur-sm" />
             <Drawer.Content className="bg-[#292928] h-fit fixed bottom-0 left-0 right-0 rounded-t-2xl outline-none">
               {/* Accessible Drawer Title */}
               <Drawer.Title className="sr-only">Navigation Menu</Drawer.Title>
 
-              <div className="flex flex-col items-center py-10 space-y-6 text-2xl text-black">
+              <div className="flex flex-col items-center py-10 space-y-6 text-2xl text-white">
                 <Drawer.Close asChild>
                   <button onClick={() => openModal("Portfolio")} className="hover:text-yellow-600 text-base">
                     Portfolio

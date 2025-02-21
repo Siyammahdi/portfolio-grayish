@@ -1,37 +1,42 @@
 import React, { useEffect, useState } from "react";
 import { Toaster, toast } from "sonner";
-import { FaDesktop, FaCogs, FaCode, FaMobileAlt, FaClipboardCheck } from "react-icons/fa";
+import { FaLaptopCode, FaDatabase, FaPalette, FaProjectDiagram, FaChartLine } from "react-icons/fa";
 
 const services = [
   {
-    title: "Front-end developers",
-    description: "Specialists in crafting user interfaces and experiences.",
-    icon: <FaDesktop className="text-3xl text-blue-500" />,
-    gradient: "linear-gradient(to right, transparent, #00d1ff, transparent)", // Blue
+    title: "Front-end Development",
+    description:
+      "Building responsive, interactive web interfaces using Next.js, React, TypeScript, and Tailwind CSS.",
+    icon: <FaLaptopCode className="text-3xl text-blue-500" />,
+    gradient: "linear-gradient(to right, transparent, #00d1ff, transparent)",
   },
   {
-    title: "Back-end developers",
-    description: "Experts in server-side logic and database management.",
-    icon: <FaCogs className="text-3xl text-green-500" />,
-    gradient: "linear-gradient(to right, transparent, #28a745, transparent)", // Green
+    title: "Full-stack Development",
+    description:
+      "Developing scalable full-stack applications with the MERN stack, combining front-end and back-end expertise.",
+    icon: <FaDatabase className="text-3xl text-green-500" />,
+    gradient: "linear-gradient(to right, transparent, #28a745, transparent)",
   },
   {
-    title: "Full-stack developers",
-    description: "Developers skilled in both front-end and back-end technologies.",
-    icon: <FaCode className="text-3xl text-purple-500" />,
-    gradient: "linear-gradient(to right, transparent, #6f42c1, transparent)", // Purple
+    title: "Figma to Next.js Conversion",
+    description:
+      "Pixel-perfect, high-performance website conversions from Figma designs to React/Next.js applications.",
+    icon: <FaPalette className="text-3xl text-purple-500" />,
+    gradient: "linear-gradient(to right, transparent, #6f42c1, transparent)",
   },
   {
-    title: "App developers",
-    description: "Designers and developers of both android and ios applications.",
-    icon: <FaMobileAlt className="text-3xl text-red-500" />,
-    gradient: "linear-gradient(to right, transparent, #dc3545, transparent)", // Red
+    title: "Web Automation",
+    description:
+      "Automating web tasks efficiently using modern technologies for streamlined workflows.",
+    icon: <FaProjectDiagram className="text-3xl text-red-500" />,
+    gradient: "linear-gradient(to right, transparent, #dc3545, transparent)",
   },
   {
-    title: "Quality Assurance",
-    description: "Ensuring the software is bug-free and meets standards.",
-    icon: <FaClipboardCheck className="text-3xl text-yellow-500" />,
-    gradient: "linear-gradient(to right, transparent, #ffc107, transparent)", // Yellow
+    title: "Data Visualization",
+    description:
+      "Transforming complex data into interactive, meaningful visualizations for insightful analysis.",
+    icon: <FaChartLine className="text-3xl text-yellow-500" />,
+    gradient: "linear-gradient(to right, transparent, #ffc107, transparent)",
   },
 ];
 
@@ -53,11 +58,11 @@ const ServiceCard = () => {
               onMouseEnter={() => setIsPaused(true)}
               onMouseLeave={() => setIsPaused(false)}
             >
-              <div className="bg-gra bg-gradient-to-b from-[#232323] to-[#121212] p-4 rounded-lg ">
-                <div className="flex-shrink-0 mb-4">{service.icon}</div>
+              <div className="bg-gradient-to-b from-[#232323] to-[#121212] p-4 rounded-lg ">
+                <div className="flex-shrink-0 mb-4 ">{service.icon}</div>
                 <div>
-                  <h3 className="text-lg font-bold text-gray-200">{service.title}</h3>
-                  <p className="text-sm text-gray-400">{service.description}</p>
+                  <h3 className="text-sm md:text-lg font-bold text-gray-200">{service.title}</h3>
+                  <p className="text-[10px] md:text-sm text-gray-400">{service.description}</p>
                 </div>
               </div>
             </div>,
@@ -76,7 +81,7 @@ const ServiceCard = () => {
 
   return (
     <div className="relative w-screen h-64 flex items-center justify-center">
-      <Toaster className="mb-20" />
+      <Toaster className="" />
     </div>
   );
 };
