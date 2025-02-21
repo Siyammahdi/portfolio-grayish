@@ -1,101 +1,232 @@
-import Image from "next/image";
+"use client";
+
+import { useState, ReactNode } from "react";
+import { IoClose } from "react-icons/io5";
+import { FaLinkedin, FaGithub, FaTwitter, FaWhatsapp } from "react-icons/fa";
+import { motion } from "framer-motion";
+import Clients from "./Components/Clients";
+import About from "./Components/About";
+import Contact from "./Components/Contact";
+import Portfolio from "./Components/Portfolio";
+import Header from "./Components/Header";
+import { AnimatedText } from "./Components/AnimatedText";
+// import GlowingText from "./Components/GlowingText";
+import LaptopScreen from "./Components/LaptopScreen";
+import ServiceCard from "./Components/ServiceCards";
+import Link from "next/link";
+import Meeting from "./Components/Meeting";
+
+type ModalContentType = "Portfolio" | "About" | "Contact" | "Meeting" | null;
+
+
+const social = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 3,
+    },
+  },
+};
+
+const socialItems = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+
+const container = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.25,
+    },
+  },
+};
+
+const item = {
+  hidden: { opacity: 0, y: 30 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+};
 
 export default function Home() {
-  return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              src/app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
+  const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
+  const [modalContent, setModalContent] = useState<ModalContentType>(null);
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
+  const openModal = (content: ModalContentType) => {
+    setModalContent(content);
+    setIsModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setIsModalOpen(false);
+    setModalContent(null);
+  };
+
+  const renderModalContent = (): ReactNode => {
+    switch (modalContent) {
+      case "Portfolio":
+        return <Portfolio />;
+      case "About":
+        return <About />;
+      case "Contact":
+        return <Contact />;
+      case "Meeting":
+        return <Meeting />;
+      default:
+        return null;
+    }
+  };
+
+  return (
+    <div className="relative text-gray-200">
+      <motion.div
+        className="absolute bg-[url('/noise-light.png')] h-full w-full top-0 left-0 opacity-60"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 0.8 }}
+      ></motion.div>
+      <motion.div
+        className={`fixed inset-0 bg-black bg-opacity-50 transition-opacity duration-300 ${isModalOpen ? "backdrop-blur-sm opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+        onClick={closeModal}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isModalOpen ? 1 : 0 }}
+        exit={{ opacity: 0 }}
+      ></motion.div>
+      <motion.div
+        className="h-screen flex flex-col justify-between"
+        variants={container}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div variants={item}>
+          <Header openModal={openModal} />
+        </motion.div>
+        <motion.div className="m-5 md:m-10 space-y-5" variants={item}>
+          <motion.h2
+            className="text-2xl md:text-4xl font-semibold lg:text-6xl md:w-1/2 lg:w-1/2"
+            variants={item}
           >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+            <AnimatedText
+              className="relative -z-10"
+              text="DELIVERING TOP CLASS DEVS FOR YOUR STARTUP"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+          </motion.h2>
+          <motion.div
+            className="text-[10px] md:text-xs lg:text-sm uppercase w-2/3 lg:w-1/3"
+            variants={item}
+          >
+            <motion.p
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{
+                duration: 0.8,
+                delay: 2,
+              }}
+              className="text-[10px] md:text-sm lg:text-2xl normal-case font-semibold relative text-[#5f5f5f] -z-10"
+            >
+
+              <span className="text-white">Save time and money,</span> Hire dedicated experts and realize your vision with <span className="text-blue-400">speed</span> and <span className="text-purple-400">precision.</span>
+            </motion.p>
+            <motion.div className="my-4 space-x-4 relative z-50" variants={item}>
+              <button onClick={() => openModal("Meeting")} className="text-gray-800 px-4 py-2 rounded-full hover:bg-gray-300 bg-gray-200">Set a meeting</button>
+              <button onClick={() => openModal("About")} className="text-gray-200 px-4 py-2 rounded-full hover:bg-gray-200 border-2 hover:border-gray-200 hover:text-gray-800">About Us</button>
+            </motion.div>
+          </motion.div>
+        </motion.div>
+        <motion.div variants={item}>
+          <Clients />
+        </motion.div>
+      </motion.div>
+
+      <div
+        className={`fixed inset-0 flex items-center justify-center transition-opacity z-50 duration-200 ${isModalOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
+
+      >
+        <div
+          className={`shadow-lg bg-black rounded-3xl p-3 md:p-6 w-11/12 max-w-6xl transform transition-transform duration-200 border-2 border-[#292928] ${isModalOpen ? "translate-y-0" : "translate-y-full"
+            }`}
+
+        >
+          <button
+            onClick={closeModal}
+            className="absolute top-8 z-50 right-8 text-gray-500 hover:text-gray-700"
+          >
+            <IoClose size={32} />
+          </button>
+          <div
+            style={{
+              backgroundImage: 'url("/modalBg4.jpg")',
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+            }}
+            className="text-xl font-semibold bg-[#1c1b1e] rounded-xl"
+          >
+            {renderModalContent()}
+          </div>
+        </div>
+      </div>
+      <motion.div
+        className="absolute bottom-10 right-96 lg:right-10 flex items-center gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
+        variants={social}
+        initial="hidden"
+        animate="show"
+      >
+        <motion.div className="flex items-center  text-gray-700 p-1 pl-4 rounded-full bg-white">
+          <Link href="https://wa.link/hpxctc"><p className="text-xs w-20">Connect with</p></Link>
+          <FaWhatsapp size={30} />
+        </motion.div>
+
+        {[
+          {
+            href: "https://linkedin.com",
+            icon: <FaLinkedin />,
+            hover: "hover:text-blue-500",
+          },
+          {
+            href: "https://github.com",
+            icon: <FaGithub />,
+            hover: "hover:text-gray-400",
+          },
+          {
+            href: "https://twitter.com",
+            icon: <FaTwitter />,
+            hover: "hover:text-blue-400",
+          },
+        ].map(({ href, icon, hover }, idx) => (
+          <motion.a
+            key={idx}
+            href={href}
             target="_blank"
             rel="noopener noreferrer"
+            className={hover}
+            variants={socialItems}
           >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+            {icon}
+          </motion.a>
+        ))}
+      </motion.div>
+
+      <div className="absolute top-2/4 right-20">
+        <ServiceCard />
+      </div>
+
+      <motion.div
+        className=""
+        variants={item}
+      >
+        <LaptopScreen />
+      </motion.div>
     </div>
   );
 }
