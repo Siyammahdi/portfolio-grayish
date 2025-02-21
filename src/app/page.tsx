@@ -192,7 +192,7 @@ export default function Home() {
         </div>
       </div>
       <motion.div
-        className="absolute bottom-6 right-6 lg:right-[430px] flex items-center gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
+        className="absolute hidden bottom-6 right-6 lg:right-[430px] md:flex items-center gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
         variants={social}
         initial="hidden"
         animate="show"

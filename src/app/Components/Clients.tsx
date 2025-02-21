@@ -25,7 +25,7 @@ const fadeInFromBottom = {
 const Clients = () => {
   return (
     <motion.div
-      className="relative -z-10 flex items-center md:w-3/5 lg:w-2/5 gap-10 m-5 lg:m-10"
+      className="relative -z-10 flex items-center md:bottom-0 bottom-44 md:w-3/5 lg:w-2/5 gap-10 m-5 lg:m-10"
       variants={staggerContainer}
       initial="hidden"
       animate="show"

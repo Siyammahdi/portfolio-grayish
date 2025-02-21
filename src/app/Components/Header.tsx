@@ -3,12 +3,39 @@ import React from 'react';
 import Logo from "@/../public/logo.png";
 import { FiMenu } from "react-icons/fi";
 import { Drawer } from 'vaul';
+import { FaFacebook, FaGithub, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import Link from 'next/link';
+import { motion } from "framer-motion";
 
 type ModalContentType = "Portfolio" | "About" | "Contact";
 
 interface HeaderProps {
   openModal: (content: ModalContentType) => void;
 }
+
+
+const social = {
+  hidden: { opacity: 0 },
+  show: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3,
+      delayChildren: 3,
+    },
+  },
+};
+
+const socialItems = {
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
 
 const Header: React.FC<HeaderProps> = ({ openModal }) => {
   return (
@@ -45,6 +72,55 @@ const Header: React.FC<HeaderProps> = ({ openModal }) => {
                     Contact
                   </button>
                 </Drawer.Close>
+
+                <Drawer.Close asChild>
+                  <motion.div
+                    className="md:hidden gap-4 text-white mb-12 md:mb-0 text-lg md:text-2xl"
+                    variants={social}
+                    initial="hidden"
+                    animate="show"
+                  >
+                    <motion.div className="flex items-center  text-gray-700 md:p-1 pl-2 md:pl-4 rounded-full bg-white">
+                      <Link href="https://wa.link/hpxctc"><p className="text-[10px] md:text-xs w-20">Connect with</p></Link>
+                      <FaWhatsapp size={30} />
+                    </motion.div>
+
+                    
+                  </motion.div>
+                </Drawer.Close>
+                <Drawer.Close asChild>
+                <div className='flex gap-4'>
+                      {[
+                        {
+                          href: "https://linkedin.com",
+                          icon: <FaLinkedin />,
+                          hover: "hover:text-blue-500",
+                        },
+                        {
+                          href: "https://github.com/Siyammahdi",
+                          icon: <FaGithub />,
+                          hover: "hover:text-gray-400",
+                        },
+                        {
+                          href: "https://www.facebook.com/siyammahdi911",
+                          icon: <FaFacebook />,
+                          hover: "hover:text-blue-400",
+                        },
+                      ].map(({ href, icon, hover }, idx) => (
+                        <motion.a
+                          key={idx}
+                          href={href}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className={hover}
+                          variants={socialItems}
+                        >
+                          {icon}
+                        </motion.a>
+                      ))}
+                    </div>
+                </Drawer.Close>
+
               </div>
             </Drawer.Content>
           </Drawer.Portal>
