@@ -164,12 +164,12 @@ const Portfolio: React.FC = () => {
               <Image
                 src={selectedProject.imageUrl}
                 alt={selectedProject.title}
-                className="w-full h-64 object-cover rounded-md mb-4"
+                className="w-full h-36 md:h-64 object-cover rounded-md mb-4"
                 height={250}
                 width={400}
               />
-              <h3 className="text-2xl font-semibold">{selectedProject.title}</h3>
-              <p className="mt-4 text-gray-600 text-base font-light">
+              <h3 className="text-xl md:text-2xl font-semibold">{selectedProject.title}</h3>
+              <p className=" mt-4 text-gray-600 text-xs md:text-base font-light">
                 {selectedProject.description}
               </p>
             </motion.div>
