@@ -112,7 +112,7 @@ export default function Home() {
         exit={{ opacity: 0 }}
       ></motion.div>
       <motion.div
-        className="h-screen flex flex-col justify-between"
+        className="h-[80vh] md:h-screen flex flex-col justify-between"
         variants={container}
         initial="hidden"
         animate="show"
