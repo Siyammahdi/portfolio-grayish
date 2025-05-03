@@ -15,7 +15,7 @@ const GlowingTextBlock = ({
       initial={{ opacity: 0 }}
       animate={{ opacity: isVisible ? 1 : 0 }}
       transition={{ duration: 0.5 }}
-      className="absolute w-[300px] md:w-[400px]  bottom-3/4 md:bottom-1/3  md:left-2/4 mx-7 md:mx-10 md:rotate-[4.5deg]"
+      className="absolute w-[300px] md:w-[400px]  top-2/3 md:bottom-1/3  md:left-2/4 mx-7 md:mx-10 md:rotate-[4.5deg]"
     >
       <p className="font-semibold text-white text-[8px] md:text-[10px] lg:text-xs text-center px-4 md:italic">{text}</p>
     </motion.div>

@@ -41,11 +41,11 @@ export const AnimatedText = ({
 }: AnimatedTextProps) => {
   const controls = useAnimation();
   const textArray = Array.isArray(text) ? text : [text];
-  const ref = useRef<HTMLSpanElement>(null); // Explicitly type the ref
+  const ref = useRef<HTMLSpanElement>(null); 
   const isInView = useInView(ref, { amount: 0.5, once });
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>; // Cross-environment timeout type
+    let timeout: ReturnType<typeof setTimeout>;
     const show = () => {
       controls.start("visible");
       if (repeatDelay) {

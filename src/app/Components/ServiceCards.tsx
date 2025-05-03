@@ -80,8 +80,8 @@ const ServiceCard = () => {
   }, [isPaused]);
 
   return (
-    <div className="relative w-screen h-64 flex items-center justify-center">
-      <Toaster className="" />
+    <div className="relative w-screen mb-20 h-64 flex -z-10 items-center justify-center">
+      <Toaster className="mb-20" />
     </div>
   );
 };
