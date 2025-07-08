@@ -202,7 +202,7 @@ const Contact: React.FC = () => {
                     <BsGithub size={18} />
                   </a>
                   <a 
-                    href="https://twitter.com/siyam_mahdi" 
+                    href="https://twitter.com/siyammahdi_" 
                     target="_blank" 
                     rel="noopener noreferrer"
                     className="w-10 h-10 bg-gray-800/50 border border-gray-700/50 rounded-full flex items-center justify-center text-gray-300 hover:text-blue-400 hover:border-blue-400/50 transition-colors"
@@ -310,7 +310,7 @@ const Contact: React.FC = () => {
                             onBlur={(e: React.FocusEvent<HTMLButtonElement>) =>
                               handleFocus("subject", e.target.value !== "")
                             }
-                            className="w-full bg-transparent focus:outline-none focus:ring-0 rounded-none text-gray-200 px-0 py-3 border-b border-gray-600 focus:border-blue-400 hover:border-gray-400 transition-colors !border-t-0 !border-r-0 !border-l-0 flex items-center font-light [&>svg]:hidden"
+                            className="w-full bg-transparent focus:outline-none focus:ring-0 focus:border-none rounded-none text-gray-200 px-0 py-3 border-b border-gray-600 focus:border-blue-400 hover:border-gray-400 transition-colors !border-t-0 !border-r-0 !border-l-0 flex items-center font-light [&>svg]:hidden outline-none"
                           >
                             <SelectValue placeholder="Select a subject" className="text-gray-400 placeholder:text-gray-500" />
                             <div className="ml-auto bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-full p-0.5 transition-transform group-hover:scale-110">

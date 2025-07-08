@@ -12,7 +12,6 @@ import LaptopScreen from "./Components/LaptopScreen";
 import ServiceCard from "./Components/ServiceCards";
 import Meeting from "./Components/Meeting";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import SkillSlider from "./Components/SkillSlider";
 
 type ModalContentType = "Portfolio" | "About" | "Contact" | "Meeting" | null;
 
@@ -58,22 +57,32 @@ export default function Home(): JSX.Element {
 
   return (
     <div className="relative h-screen text-gray-200">
+      {/* Background gradient elements */}
+      <div className="absolute -z-10 inset-0 overflow-hidden pointer-events-none opacity-10">
+        <div className="absolute w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-60 left-1/3 w-80 h-60 bg-purple-500 rounded-full blur-3xl"></div>
+      </div>
+      <div className="absolute -z-10 inset-0 overflow-hidden pointer-events-none opacity-10">
+        <div className="absolute -top-40 -left-40 w-80 h-80 bg-blue-500 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-60 h-60 bg-purple-500 rounded-full blur-3xl"></div>
+      </div>
+      
       <motion.div
         className="absolute bg-[url('/noise-light.png')] h-full w-full -z-50 top-0 left-0 opacity-60"
         initial={{ opacity: 0 }}
         animate={{ opacity: 0.6 }}
         transition={{ duration: 0.8 }}
       />
-      
+
       <motion.div className="h-[80vh] md:h-screen flex flex-col justify-between" initial="hidden" animate="show">
         <motion.div variants={itemVariants}>
           <Header openModal={openModal} />
         </motion.div>
 
         <motion.div>
-          <SkillSlider />
+
         </motion.div>
-        
+
         <motion.div className="m-5 md:m-10 pb-48 space-y-5" variants={itemVariants}>
           <motion.h2 className="text-2xl md:text-4xl font-semibold lg:text-5xl md:w-1/2 lg:w-1/2">
             <AnimatedText className="relative -z-10 uppercase" text="Building High-Quality Web Solutions with Modern Tech" />
@@ -90,12 +99,12 @@ export default function Home(): JSX.Element {
             </button>
           </motion.div>
         </motion.div>
-        
+
         <motion.div variants={itemVariants}>
           <SocialLinks />
         </motion.div>
       </motion.div>
-      
+
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
         <DialogContent className="bg-black border-2 border-[#292928] text-gray-200">
           <DialogHeader>
@@ -104,13 +113,13 @@ export default function Home(): JSX.Element {
           {renderModalContent()}
         </DialogContent>
       </Dialog>
-      
 
-      
+
+
       <div className="absolute top-1/4 right-0">
         <ServiceCard />
       </div>
-      
+
       <motion.div variants={itemVariants}>
         <LaptopScreen />
       </motion.div>

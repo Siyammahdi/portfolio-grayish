@@ -20,6 +20,33 @@ html, body {
   -ms-overflow-style: none;
 }
 
+/* Continuous scroll animation for skill slider */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-33.333%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
+}
+
+.animation-play-state-paused {
+  animation-play-state: paused;
+}
+
+/* Ensure hover effects work properly */
+.skill-card-container {
+  padding: 1rem 0;
+}
+
+.skill-card-container:hover {
+  z-index: 10;
+}
+
 @layer base {
   :root {
     --radius: 0.5rem;

@@ -15,6 +15,15 @@ interface Project {
 
 const projects: Project[] = [
   {
+    id: 2,
+    title: "Learning Management System",
+    description:
+      "An advanced, scalable learning management system (LMS) designed with Next.js, TypeScript, and Tailwind CSS, focusing on interactive data visualization. The platform efficiently handles large datasets, providing real-time analytics with dynamic charts and graphs to track learner progress. It features role-based access control, intuitive dashboards, and modular architecture for easy customization. Optimized for performance with server-side rendering, lazy loading, and responsive design, ensuring seamless experiences across devices. The solution also supports seamless API integrations, secure authentication, and efficient user management, making it ideal for educational institutions and corporate training environments.",
+    category: "Web Development",
+    imageUrl: "/portfolio/an-nahda.gif",
+    siteUrl: "https://an-nahda-academy.vercel.app/",
+  },
+  {
     id: 1,
     title: "E-commerce Grocery Solution",
     description:
@@ -25,13 +34,13 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Learning Platform Management",
+    title: "AI Powered Task Manager",
     description:
-      "An advanced, scalable learning management system (LMS) designed with Next.js, TypeScript, and Tailwind CSS, focusing on interactive data visualization. The platform efficiently handles large datasets, providing real-time analytics with dynamic charts and graphs to track learner progress. It features role-based access control, intuitive dashboards, and modular architecture for easy customization. Optimized for performance with server-side rendering, lazy loading, and responsive design, ensuring seamless experiences across devices. The solution also supports seamless API integrations, secure authentication, and efficient user management, making it ideal for educational institutions and corporate training environments.",
-    category: "Web Development",
-    imageUrl: "/portfolio/an-nahda.gif",
-    siteUrl: "https://an-nahda-academy.vercel.app/",
-  },
+      "An intelligent, scalable task management system built with Next.js, TypeScript, and Tailwind CSS, designed to boost productivity through AI-driven suggestions. This platform helps users organize tasks efficiently and provides smart recommendations to prioritize work, set deadlines, and allocate resources effectively. It features intuitive dashboards, role-based access, and dynamic progress tracking with real-time updates. Optimized for performance with server-side rendering, lazy loading, and a responsive design for a seamless experience on any device. The solution supports secure authentication, seamless API integrations, and modular architecture for easy customization, making it ideal for individuals and teams aiming to streamline their workflow and achieve goals faster.",
+    category: "Web Application",
+    imageUrl: "/portfolio/task-manager.png",
+    siteUrl: "https://taskify-management-amber.vercel.app/",
+  },  
   {
     id: 3,
     title: "Online Interview Solution",
